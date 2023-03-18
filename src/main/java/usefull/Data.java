@@ -1,7 +1,6 @@
 package usefull;
 
-public class Datas {
-
+final class Data {
 	/*
 	 * громкость звука принимаем так:
 	 * musicVolume = (float) (Math.log(d) / Math.log(2) * 6.0f);
