@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 @Slf4j
-public final class Screensaver {
+public class Screensaver {
     public static void saveImage(BufferedImage image, Path saveAs) throws IOException {
         String exp = saveAs.getFileName().toString().split("\\.")[saveAs.getFileName().toString().split("\\.").length - 1];
         saveImage(image, exp, saveAs);
@@ -17,4 +17,6 @@ public final class Screensaver {
         log.debug("Saving the image " + saveAs + " (" + extension + ")...");
         ImageIO.write(image, extension, saveAs.toFile());
     }
+
+    private Screensaver() {}
 }

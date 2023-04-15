@@ -12,7 +12,7 @@ import java.awt.geom.Point2D;
  * Данный класс призван решить проблему с определением координат
  * для расположения объектов в динамических окнах.
  */
-public final class FoxDynamicFrameSizePlacer {
+public class FoxDynamicFrameSizePlacer {
     // FIND DIFFERENCE:
     //	Принимает старую длину вектора и новую.
     // Возвращает процент изменения double от 0 до 1.
@@ -56,27 +56,27 @@ public final class FoxDynamicFrameSizePlacer {
 
     // PERCENT to POINT:
     // Возвращает double от 0 до 1.
-    public static double getPixels(double newDimLenght, double percent) throws Exception {
+    public static double getPixels(double newDimLenght, double percent) throws IllegalArgumentException {
         if (percent < 0 || percent > 1) {
-            throw new Exception("percent must be '>= 0' and '<= 1'.");
+            throw new IllegalArgumentException("percent must be '>= 0' and '<= 1'.");
         }
         return newDimLenght * percent;
     }
 
     // Принимает новую длину вектора и требуемый процент от 0 до 1 для нахождения точки.
     // возвращает float от 0 до 1:
-    public static float getPixels(float newDimLenght, float percent) throws Exception {
+    public static float getPixels(float newDimLenght, float percent) throws IllegalArgumentException {
         if (percent < 0 || percent > 1) {
-            throw new Exception("percent must be '>= 0' and '<= 1'.");
+            throw new IllegalArgumentException("percent must be '>= 0' and '<= 1'.");
         }
         return newDimLenght * percent;
     }
 
     // Принимает новую длину вектора и требуемый процент от 0 до 100 для нахождения точки.
     // возвращает int от 0 до 100:
-    public static int getPixels(int newDimLenght, int percent) throws Exception {
+    public static int getPixels(int newDimLenght, int percent) throws IllegalArgumentException {
         if (percent < 0 || percent > 100) {
-            throw new Exception("percent must be '>= 0' and '<= 100'.");
+            throw new IllegalArgumentException("percent must be '>= 0' and '<= 100'.");
         }
         return (int) ((newDimLenght * 1f) * (percent * 1f) / 100f);
     }

@@ -3,12 +3,11 @@ package fox;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 // https://www.codeflow.site/ru/article/java-convert-roman-arabic
-public final class RomanArabicConverter {
+public class RomanArabicConverter {
 
-    public int romanToArabic(String input) {
+    public int romanToArabic(String input) throws Exception {
         int result = 0;
 
         try {
@@ -34,7 +33,7 @@ public final class RomanArabicConverter {
                     throw new IllegalArgumentException(input + " cannot be converted to a Roman Numeral");
                 }
             } catch (Exception e2) {
-                throw new RuntimeException("Не удалось преобразовать тип числа: " + e2.getMessage());
+                throw new Exception("Не удалось преобразовать тип числа: " + e2.getMessage());
             }
         }
 
@@ -90,7 +89,7 @@ public final class RomanArabicConverter {
         public static List<RomanNumeral> getReverseSortedValues() {
             return Arrays.stream(values())
                     .sorted(Comparator.comparing((RomanNumeral e) -> e.value).reversed())
-                    .collect(Collectors.toList());
+                    .toList();
         }
 
         public int getValue() {
