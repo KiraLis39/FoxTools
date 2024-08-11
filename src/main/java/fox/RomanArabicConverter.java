@@ -1,5 +1,7 @@
 package fox;
 
+import lombok.Getter;
+
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -19,7 +21,7 @@ public class RomanArabicConverter {
                 List<RomanNumeral> romanNumerals = RomanNumeral.getReverseSortedValues();
 
                 int i = 0;
-                while ((romanNumeral.length() > 0) && (i < romanNumerals.size())) {
+                while ((!romanNumeral.isEmpty()) && (i < romanNumerals.size())) {
                     RomanNumeral symbol = romanNumerals.get(i);
                     if (romanNumeral.startsWith(symbol.name())) {
                         result += symbol.getValue();
@@ -29,7 +31,7 @@ public class RomanArabicConverter {
                     }
                 }
 
-                if (romanNumeral.length() > 0) {
+                if (!romanNumeral.isEmpty()) {
                     throw new IllegalArgumentException(input + " cannot be converted to a Roman Numeral");
                 }
             } catch (Exception e2) {
@@ -63,22 +65,23 @@ public class RomanArabicConverter {
         return sb.toString();
     }
 
+    @Getter
     public enum RomanNumeral {
         I(1),
-		IV(4),
-		//VI(6),
-		V(5),
-		IX(9),
-		X(10),
-		//XI(11),
-		XL(40),
-		L(50),
-		XC(90),
-		C(100),
-		CD(400),
-		D(500),
-		CM(900),
-		M(1000);
+        IV(4),
+        //VI(6),
+        V(5),
+        IX(9),
+        X(10),
+        //XI(11),
+        XL(40),
+        L(50),
+        XC(90),
+        C(100),
+        CD(400),
+        D(500),
+        CM(900),
+        M(1000);
 
         private final int value;
 
@@ -90,10 +93,6 @@ public class RomanArabicConverter {
             return Arrays.stream(values())
                     .sorted(Comparator.comparing((RomanNumeral e) -> e.value).reversed())
                     .toList();
-        }
-
-        public int getValue() {
-            return value;
         }
     }
 }
