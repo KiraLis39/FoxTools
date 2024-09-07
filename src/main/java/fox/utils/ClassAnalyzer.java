@@ -1,18 +1,19 @@
-package fox;
+package fox.utils;
+
+import lombok.experimental.UtilityClass;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
 
-public class ClassAnalyzer {
-
+@UtilityClass
+public final class ClassAnalyzer {
     public String analyze(Class<?> obj) {
-        StringBuilder sb = new StringBuilder();
-
+        final StringBuilder sb = new StringBuilder();
         sb.append("\nКласс рассматривается: ").append(obj.getName()).append("\n\tМодификатор:\n");
-        int mods = obj.getModifiers();
 
+        int mods = obj.getModifiers();
         if (Modifier.isPublic(mods)) {
             sb.append("public");
         }
@@ -22,9 +23,9 @@ public class ClassAnalyzer {
         if (Modifier.isFinal(mods)) {
             sb.append("final");
         }
+
         sb.append("\n\n\tСуперкласс: ").append(obj.getSuperclass());
         sb.append("\n\n\tИнтерфейсы:\n");
-
         Class<?>[] interfaces = obj.getInterfaces();
         for (Class<?> cInterface : interfaces) {
             sb.append(cInterface.getName()).append(";\n");
@@ -39,7 +40,6 @@ public class ClassAnalyzer {
         }
 
         sb.append("\n\nПовтор в declared-mode:\n");
-
         publicFields = obj.getDeclaredFields();
         for (Field field : publicFields) {
             Class<?> fieldType = field.getType();

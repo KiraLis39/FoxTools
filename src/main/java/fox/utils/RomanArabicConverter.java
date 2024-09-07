@@ -1,14 +1,15 @@
-package fox;
+package fox.utils;
 
 import lombok.Getter;
+import lombok.experimental.UtilityClass;
 
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
 // https://www.codeflow.site/ru/article/java-convert-roman-arabic
+@UtilityClass
 public class RomanArabicConverter {
-
     public int romanToArabic(String input) throws Exception {
         int result = 0;
 

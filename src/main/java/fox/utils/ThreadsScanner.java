@@ -1,13 +1,12 @@
-package fox;
+package fox.utils;
 
+import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@UtilityClass
 public class ThreadsScanner {
-    private ThreadsScanner() {
-    }
-
-    public static void scan() {
+    public static void scanCurrent() {
         ThreadGroup currentGroup = Thread.currentThread().getThreadGroup();
         Thread[] lstThreads = new Thread[currentGroup.activeCount()];
         currentGroup.enumerate(lstThreads);
